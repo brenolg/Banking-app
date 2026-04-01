@@ -7,6 +7,8 @@ type State = {
   expenses: number;
   transactions: Transaction[];
   setDashboard: (data: DashboardData) => void;
+  addTransaction: (transaction: Transaction) => void;
+  transfer: (amount: number, title: string) => void;
 };
 
 export const useDashboardStore = create<State>((set) => ({
@@ -22,5 +24,26 @@ export const useDashboardStore = create<State>((set) => ({
       expenses: data.expenses,
       transactions: data.transactions,
     });
+  },
+
+  addTransaction: (transaction) =>
+    set((state) => ({
+      transactions: [transaction, ...state.transactions],
+    })),
+
+  transfer: (amount: number, title: string) => {
+    const newTransaction: Transaction = {
+      id: crypto.randomUUID(),
+      title,
+      amount: -amount,
+      type: "expense",
+      date: new Date().toISOString(),
+    };
+
+    set((state) => ({
+      balance: state.balance - amount,
+      expenses: state.expenses - amount,
+      transactions: [newTransaction, ...state.transactions],
+    }));
   },
 }));

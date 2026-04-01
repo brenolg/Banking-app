@@ -16,6 +16,7 @@ export default function Home() {
   const { isLoading } = useQuery({
     queryKey: ["dashboard"],
     queryFn: getDashboardData,
+    refetchOnMount: false,
   });
 
   if (isLoading) {

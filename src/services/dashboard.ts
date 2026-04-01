@@ -14,7 +14,7 @@ export async function getDashboardData(): Promise<DashboardData> {
   const setDashboard = useDashboardStore.getState().setDashboard;
 
   const data: DashboardData = {
-    balance: 5230.75,
+    balance: 500,
     expenses: -300,
     income: 500,
     transactions: [
