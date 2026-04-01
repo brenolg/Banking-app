@@ -1,18 +1,19 @@
-import { getDashboardData } from "@/services/dashboard";
-import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-
 import { Extract } from "@/components/Extract";
 import Loading from "@/components/loading";
 import MoneyCard from "@/components/MoneyCard";
 import { Button } from "@/components/ui/button";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getDashboardData } from "@/services/dashboard";
+import { useDashboardStore } from "@/store/useDashboardStore";
 import { formatMoney } from "@/utils/formatMoney";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
+  const { balance, income, expenses, transactions } = useDashboardStore();
 
-  const { data, isLoading } = useQuery({
+  const { isLoading } = useQuery({
     queryKey: ["dashboard"],
     queryFn: getDashboardData,
   });
@@ -33,18 +34,18 @@ export default function Home() {
           </CardHeader>
 
           <CardContent>
-            <p className="text-3xl font-bold">{formatMoney(data?.balance)}</p>
+            <p className="text-3xl font-bold">{formatMoney(balance)}</p>
           </CardContent>
         </div>
       </div>
       {/* Despesas e entradas totais */}
       <div className="flex gap-6">
-        <MoneyCard title="Entradas" value={data?.income} />
-        <MoneyCard title="Saídas" value={data?.expenses} />
+        <MoneyCard title="Entradas" value={income} />
+        <MoneyCard title="Saídas" value={expenses} />
       </div>
 
       {/* Transações */}
-      <Extract transactions={data?.transactions} />
+      <Extract transactions={transactions} />
     </div>
   );
 }

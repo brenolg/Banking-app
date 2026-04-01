@@ -1,5 +1,6 @@
 import type { Transaction } from "@/types/money";
 
+import { useDashboardStore } from "@/store/useDashboardStore";
 type DashboardData = {
   balance: number;
   income: number;
@@ -10,7 +11,9 @@ type DashboardData = {
 export async function getDashboardData(): Promise<DashboardData> {
   await new Promise((r) => setTimeout(r, 1000));
 
-  return {
+  const setDashboard = useDashboardStore.getState().setDashboard;
+
+  const data: DashboardData = {
     balance: 5230.75,
     expenses: -300,
     income: 500,
@@ -38,4 +41,8 @@ export async function getDashboardData(): Promise<DashboardData> {
       },
     ],
   };
+  // 👇 popula o store
+  setDashboard(data);
+
+  return data;
 }
