@@ -1,7 +1,6 @@
+import { FormField } from "@/components/FormField";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { loginRequest } from "@/services/login";
 import type { LoginResponse } from "@/types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -55,34 +54,24 @@ export default function Login() {
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             {/* Email*/}
-            <div className="space-y-2">
-              <Label>Email</Label>
-              <Input
-                type="email"
-                placeholder="seu@email.com"
-                {...register("email")}
-              />
-              {errors.email && (
-                <p className="text-sm text-red-500">{errors.email.message}</p>
-              )}
-            </div>
+            <FormField
+              label="Email"
+              type="email"
+              placeholder="seu@email.com"
+              registration={register("email")}
+              error={errors.email}
+            />
 
             {/* Senha*/}
-            <div className="space-y-2">
-              <Label>Senha</Label>
-              <Input
-                type="password"
-                placeholder="********"
-                {...register("password")}
-              />
-              {errors.password && (
-                <p className="text-sm text-red-500">
-                  {errors.password.message}
-                </p>
-              )}
-            </div>
+            <FormField
+              label="Senha"
+              type="password"
+              placeholder="********"
+              registration={register("password")}
+              error={errors.password}
+            />
 
-            {/* BOTÃO */}
+            {/* Botão submit*/}
             <Button
               type="submit"
               className="w-full"

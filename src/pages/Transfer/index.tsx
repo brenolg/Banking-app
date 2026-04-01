@@ -1,5 +1,5 @@
+import { FormField } from "@/components/FormField";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { createTransfer } from "@/services/createTransfer";
 import { useDashboardStore } from "@/store/useDashboardStore";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -41,24 +41,20 @@ export default function Transfer() {
       <h1 className="text-2xl font-bold">Transferência</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          <Input placeholder="Descrição" {...register("title")} />
-          {errors.title && (
-            <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
-          )}
-        </div>
+        <FormField
+          label="Descrição"
+          placeholder="Ex: Mercado"
+          registration={register("title")}
+          error={errors.title}
+        />
 
-        <div>
-          <Input
-            placeholder="Valor"
-            type="number"
-            step="0.01"
-            {...register("amount", { valueAsNumber: true })}
-          />
-          {errors.amount && (
-            <p className="text-red-500 text-sm mt-1">{errors.amount.message}</p>
-          )}
-        </div>
+        <FormField
+          label="Valor"
+          type="number"
+          placeholder="0.00"
+          registration={register("amount", { valueAsNumber: true })}
+          error={errors.amount}
+        />
 
         <Button type="submit" className="w-full">
           {isPending ? "Transferindo..." : "Transferir"}
