@@ -26,6 +26,13 @@ export default function Transfer() {
       transfer(data.amount, data.title);
       navigate("/home");
     },
+    onError: (error) => {
+      if (error instanceof Error) {
+        alert(error.message);
+      } else {
+        alert("Erro ao realizar transferência");
+      }
+    },
   });
 
   function onSubmit(data: TransferFormData) {

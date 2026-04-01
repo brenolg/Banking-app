@@ -13,7 +13,7 @@ export default function Home() {
   const navigate = useNavigate();
   const { balance, income, expenses, transactions } = useDashboardStore();
 
-  const { isLoading } = useQuery({
+  const { isLoading, isError, error } = useQuery({
     queryKey: ["dashboard"],
     queryFn: getDashboardData,
     refetchOnMount: false,
@@ -21,6 +21,14 @@ export default function Home() {
 
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (isError) {
+    return (
+      <p className="text-red-500">
+        {error instanceof Error ? error.message : "Erro ao carregar"}
+      </p>
+    );
   }
 
   return (
