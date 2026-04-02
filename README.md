@@ -2,7 +2,7 @@
 
 Aplicação web de gerenciamento financeiro, validação de formulários e boas práticas modernas de desenvolvimento frontend.
 
-## 🚀 Demo
+## Demo
 
 👉 https://brenolg.github.io/Banking-app
 
