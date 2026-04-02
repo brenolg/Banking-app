@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# 💰 Banking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web de gerenciamento financeiro, validação de formulários e boas práticas modernas de desenvolvimento frontend.
 
-Currently, two official plugins are available:
+## 🚀 Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+👉 https://brenolg.github.io/Banking-app
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🧠 Sobre o projeto
 
-## Expanding the ESLint configuration
+O **Banking App** simula uma interface bancária onde o usuário pode:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔐 Realizar login com validação
+- 📊 Visualizar saldo, receitas e despesas
+- 💸 Simulação de uma transação
+- 💸 Acompanhar histórico de transações 
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+O projeto foi desenvolvido com foco em:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Arquitetura limpa
+- Testes automatizados
+- Tipagem com TypeScript
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+## 🛠️ Tecnologias utilizadas
+
+• React + TypeScript  
+• Vite  
+• Tailwind + CVA  
+• shadcn/ui + Radix  
+• React Router  
+• React Query  
+• Zustand  
+• React Hook Form + Zod  
+• Axios  
+• Vitest  
+
+- **Axios**  
+  Responsável por simular as requisições HTTP. 
+
+- **Axios Mock Adapter**  
+  Utilizado para simular um backend durante o desenvolvimento, interceptando requisições e retornando respostas mockadas (sucesso ou erro).
+
+- **React Query**  
+  Gerencia o estado das requisições assíncronas, controlando automaticamente estados como loading, sucesso e erro.
+
+ - **React Hook Form + Zod**  
+  Utilizados para gerenciamento e validação de formulários com schemas de validação com tipagem.
+
+- **Tailwind CSS + CVA + shadcn/ui + Radix UI**  
+  Utilizados para construção da interface da aplicação.
+
+  - **Zustand**  
+  Utilizado para gerenciamento de estado global
+
+
+## 🔐 Autenticação
+
+O login é simulado utilizando mock de API com Axios. 
+Credenciais válidas:
+email: breno@test.com
+senha: 123456
+
+## 🧪 Testes
+
+O projeto possui testes automatizados cobrindo o fluxo de login:
+
+- ✔️ Componentes (integração)
+- ✔️ Serviços (unitários)
+- ✔️ Fluxos de sucesso e erro
+
+### ▶️ Rodar os testes (modo desenvolvimento)
+
+```bash
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ▶️ Como rodar o projeto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Clone o repositório
+git clone https://github.com/brenolg/Banking-app.git
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Acesse a pasta
+cd Banking-ap
+
+# Instale as dependências
+npm install
+
+# Inicie o projeto
+npm run dev
 ```
+
+
