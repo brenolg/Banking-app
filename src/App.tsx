@@ -5,7 +5,7 @@ import Transfer from "./pages/Transfer";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Banking-app">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
