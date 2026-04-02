@@ -3,7 +3,7 @@ import type { LoginRequest, LoginResponse } from "@/types/auth";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: "https://fake.com",
 });
 
