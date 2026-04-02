@@ -51,7 +51,7 @@ O projeto foi desenvolvido com foco em:
 - **Tailwind CSS + CVA + shadcn/ui + Radix UI**  
   Utilizados para construção da interface da aplicação.
 
-  - **Zustand**  
+- **Zustand**  
   Utilizado para gerenciamento de estado global
 
 
